@@ -1,0 +1,1507 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trần Đức Hùng — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --blue: #1565C0;
+    --blue-light: #42A5F5;
+    --blue-pale: #E3F2FD;
+    --pink: #F06292;
+    --pink-light: #F8BBD9;
+    --pink-pale: #FCE4EC;
+    --white: #FFFFFF;
+    --black: #0D0D0D;
+    --gray: #6B7280;
+    --gray-light: #F5F5F5;
+    --border: rgba(21,101,192,0.15);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--white);
+    color: var(--black);
+    overflow-x: hidden;
+  }
+
+  /* ========== NAV ========== */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1rem 3rem;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem; font-weight: 700;
+    color: var(--blue);
+    letter-spacing: -0.5px;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.9rem; font-weight: 500; color: var(--gray);
+    text-decoration: none; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--blue); }
+
+  /* ========== HERO ========== */
+  .hero {
+    min-height: 100vh;
+    display: grid; grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 6rem 3rem 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; right: -100px; top: -100px;
+    width: 600px; height: 600px; border-radius: 50%;
+    background: radial-gradient(circle, var(--pink-pale) 0%, var(--blue-pale) 60%, transparent 75%);
+    opacity: 0.6;
+    animation: float 6s ease-in-out infinite;
+  }
+  @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-20px)} }
+
+  .hero-text { position: relative; z-index: 1; }
+  .hero-badge {
+    display: inline-block;
+    background: var(--pink-pale); color: var(--pink);
+    font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.4rem 1rem; border-radius: 100px;
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--pink-light);
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 700; line-height: 1.1;
+    margin-bottom: 0.5rem;
+    color: var(--black);
+  }
+  .hero h1 span { color: var(--blue); }
+  .hero-sub {
+    font-size: 1rem; color: var(--gray);
+    line-height: 1.7; margin: 1.5rem 0 2.5rem;
+    max-width: 480px;
+  }
+  .hero-cta {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+  }
+  .btn-primary {
+    background: var(--blue); color: #fff;
+    border: none; padding: 0.8rem 2rem;
+    border-radius: 100px; font-size: 0.9rem; font-weight: 600;
+    cursor: pointer; text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: #0D47A1; transform: translateY(-2px); }
+  .btn-outline {
+    background: transparent; color: var(--blue);
+    border: 1.5px solid var(--blue); padding: 0.8rem 2rem;
+    border-radius: 100px; font-size: 0.9rem; font-weight: 600;
+    cursor: pointer; text-decoration: none;
+    transition: all 0.2s; display: inline-block;
+  }
+  .btn-outline:hover { background: var(--blue-pale); }
+
+  .hero-card {
+    position: relative; z-index: 1;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 2.5rem;
+    box-shadow: 0 20px 60px rgba(21,101,192,0.08);
+    margin-left: auto; max-width: 380px;
+  }
+  .avatar {
+    width: 80px; height: 80px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--blue-light), var(--pink));
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem; font-weight: 700; color: #fff;
+    margin-bottom: 1.5rem;
+  }
+  .hero-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem; margin-bottom: 0.25rem;
+  }
+  .hero-card p { font-size: 0.85rem; color: var(--gray); margin-bottom: 1.5rem; }
+  .info-list { list-style: none; }
+  .info-list li {
+    display: flex; align-items: center; gap: 0.75rem;
+    font-size: 0.85rem; color: var(--black);
+    padding: 0.6rem 0;
+    border-bottom: 1px solid var(--gray-light);
+  }
+  .info-list li:last-child { border-bottom: none; }
+  .info-icon {
+    width: 28px; height: 28px; border-radius: 8px;
+    background: var(--blue-pale);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.85rem;
+    flex-shrink: 0;
+  }
+
+  /* ========== SECTION SHARED ========== */
+  section { padding: 5rem 3rem; }
+  .section-tag {
+    font-size: 0.78rem; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.1em; color: var(--pink);
+    display: block; margin-bottom: 0.75rem;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    font-weight: 700; color: var(--black);
+    margin-bottom: 1rem;
+  }
+  .section-desc { font-size: 1rem; color: var(--gray); max-width: 560px; line-height: 1.7; margin-bottom: 3rem; }
+
+  /* ========== ABOUT ========== */
+  #about { background: var(--gray-light); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+  .about-text p { font-size: 1rem; color: var(--gray); line-height: 1.8; margin-bottom: 1rem; }
+  .goal-card {
+    background: var(--white); border-radius: 16px;
+    padding: 1.5rem; border: 1px solid var(--border);
+    margin-top: 1.5rem;
+  }
+  .goal-card h4 {
+    font-size: 0.85rem; font-weight: 600; color: var(--blue);
+    text-transform: uppercase; letter-spacing: 0.05em;
+    margin-bottom: 0.75rem;
+  }
+  .goal-card p { font-size: 0.9rem; color: var(--gray); line-height: 1.6; margin: 0; }
+
+  .skills-wrap { display: flex; flex-direction: column; gap: 1rem; }
+  .skill-item { }
+  .skill-header { display: flex; justify-content: space-between; margin-bottom: 0.4rem; }
+  .skill-name { font-size: 0.9rem; font-weight: 500; }
+  .skill-pct { font-size: 0.85rem; color: var(--blue); font-weight: 600; }
+  .skill-bar { height: 6px; background: var(--border); border-radius: 100px; overflow: hidden; }
+  .skill-fill { height: 100%; border-radius: 100px; background: linear-gradient(to right, var(--blue), var(--blue-light)); transition: width 1s ease; }
+
+  /* ========== PROJECTS ========== */
+  #projects { background: var(--white); }
+  .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+  .project-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 20px; overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+  }
+  .project-card:hover { transform: translateY(-6px); box-shadow: 0 16px 48px rgba(21,101,192,0.1); }
+  .project-header {
+    padding: 2rem 2rem 1rem;
+    display: flex; align-items: flex-start; justify-content: space-between;
+  }
+  .project-icon {
+    width: 48px; height: 48px; border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem;
+  }
+  .tag {
+    font-size: 0.75rem; font-weight: 600; padding: 0.3rem 0.75rem;
+    border-radius: 100px;
+  }
+  .tag-blue { background: var(--blue-pale); color: var(--blue); }
+  .tag-pink { background: var(--pink-pale); color: var(--pink); }
+  .tag-dark { background: #1a1a2e; color: #fff; }
+  .project-body { padding: 0 2rem 2rem; }
+  .project-body h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem; font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  .project-body p { font-size: 0.88rem; color: var(--gray); line-height: 1.6; margin-bottom: 1rem; }
+  .project-tech { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .tech-pill {
+    font-size: 0.72rem; background: var(--gray-light);
+    color: var(--gray); padding: 0.25rem 0.6rem;
+    border-radius: 100px;
+  }
+  .project-footer {
+    padding: 1rem 2rem;
+    border-top: 1px solid var(--gray-light);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .project-link {
+    font-size: 0.82rem; font-weight: 600; color: var(--blue);
+    text-decoration: none; display: flex; align-items: center; gap: 0.3rem;
+  }
+  .project-link:hover { text-decoration: underline; }
+  .project-date { font-size: 0.78rem; color: var(--gray); }
+
+  /* ========== TIMELINE ========== */
+  #timeline { background: var(--gray-light); }
+  .timeline { max-width: 700px; margin: 0 auto; position: relative; }
+  .timeline::before {
+    content: ''; position: absolute; left: 20px; top: 0; bottom: 0;
+    width: 2px; background: linear-gradient(to bottom, var(--blue), var(--pink));
+    border-radius: 100px;
+  }
+  .timeline-item { display: flex; gap: 2rem; margin-bottom: 2.5rem; }
+  .tl-dot {
+    width: 40px; height: 40px; border-radius: 50%; flex-shrink: 0;
+    background: var(--white); border: 2px solid var(--blue);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem; position: relative; z-index: 1;
+  }
+  .tl-content {
+    background: var(--white); border-radius: 16px;
+    padding: 1.25rem 1.5rem; border: 1px solid var(--border);
+    flex: 1;
+  }
+  .tl-content h4 { font-size: 1rem; font-weight: 600; margin-bottom: 0.25rem; }
+  .tl-content .tl-meta { font-size: 0.8rem; color: var(--blue); font-weight: 600; margin-bottom: 0.5rem; }
+  .tl-content p { font-size: 0.87rem; color: var(--gray); line-height: 1.6; margin: 0; }
+
+  /* ========== CONTACT ========== */
+  #contact { background: var(--white); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+  .contact-item {
+    display: flex; gap: 1rem; align-items: flex-start;
+    margin-bottom: 1.5rem;
+  }
+  .contact-icon-wrap {
+    width: 44px; height: 44px; border-radius: 12px; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center; font-size: 1.2rem;
+  }
+  .ci-blue { background: var(--blue-pale); }
+  .ci-pink { background: var(--pink-pale); }
+  .contact-item h4 { font-size: 0.82rem; font-weight: 600; color: var(--gray); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.2rem; }
+  .contact-item p { font-size: 0.95rem; font-weight: 500; }
+
+  .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+  .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+  .form-group label { font-size: 0.85rem; font-weight: 500; color: var(--gray); }
+  .form-group input, .form-group textarea {
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border); border-radius: 10px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem; color: var(--black);
+    background: var(--gray-light);
+    transition: border-color 0.2s;
+    outline: none;
+  }
+  .form-group input:focus, .form-group textarea:focus { border-color: var(--blue); background: var(--white); }
+  .form-group textarea { resize: vertical; min-height: 120px; }
+
+  /* ========== FOOTER ========== */
+  footer {
+    background: var(--black); color: rgba(255,255,255,0.5);
+    text-align: center; padding: 2rem;
+    font-size: 0.85rem;
+  }
+  footer span { color: var(--pink); }
+
+  /* ========== ANIMATIONS ========== */
+  .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  /* ========== RESPONSIVE ========== */
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { gap: 1rem; }
+    .hero { grid-template-columns: 1fr; padding: 5rem 1.5rem 3rem; gap: 3rem; }
+    .hero::before { display: none; }
+    .hero-card { margin-left: 0; max-width: 100%; }
+    section { padding: 3.5rem 1.5rem; }
+    .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .timeline::before { left: 16px; }
+    .tl-dot { width: 32px; height: 32px; }
+  }
+
+  /* ========== MODAL ========== */
+  .modal-overlay {
+    display: none; position: fixed; inset: 0; z-index: 200;
+    background: rgba(13,13,13,0.55); backdrop-filter: blur(4px);
+    align-items: center; justify-content: center; padding: 1.5rem;
+  }
+  .modal-overlay.open { display: flex; }
+  .modal-box {
+    background: var(--white); border-radius: 20px;
+    max-width: 720px; width: 100%; max-height: 85vh;
+    overflow-y: auto; box-shadow: 0 32px 80px rgba(0,0,0,0.18);
+    animation: modalIn 0.25s ease;
+  }
+  @keyframes modalIn { from{transform:translateY(20px);opacity:0} to{transform:translateY(0);opacity:1} }
+  .modal-header {
+    position: sticky; top: 0; background: var(--white);
+    padding: 1.5rem 2rem 1rem;
+    border-bottom: 1px solid var(--gray-light);
+    display: flex; justify-content: space-between; align-items: flex-start;
+    z-index: 1; border-radius: 20px 20px 0 0;
+  }
+  .modal-header h2 { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--black); }
+  .modal-header p { font-size: 0.82rem; color: var(--blue); font-weight: 600; margin-top: 0.2rem; }
+  .modal-close {
+    background: var(--gray-light); border: none; cursor: pointer;
+    width: 32px; height: 32px; border-radius: 50%;
+    font-size: 1rem; display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; transition: background 0.15s;
+  }
+  .modal-close:hover { background: var(--pink-pale); }
+  .modal-body { padding: 1.5rem 2rem 2rem; }
+  .step-list { list-style: none; counter-reset: step; padding: 0; margin: 0; }
+  .step-list li {
+    display: flex; gap: 1rem; align-items: flex-start;
+    padding: 0.9rem 0; border-bottom: 1px solid var(--gray-light);
+    font-size: 0.88rem; color: var(--black); line-height: 1.6;
+  }
+  .step-list li:last-child { border-bottom: none; }
+  .step-num {
+    min-width: 28px; height: 28px; border-radius: 50%;
+    background: var(--blue); color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.75rem; font-weight: 700; flex-shrink: 0; margin-top: 2px;
+  }
+  .modal-section-title { font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--pink); margin: 1.25rem 0 0.75rem; }
+  .modal-intro { font-size: 0.9rem; color: var(--gray); line-height: 1.7; margin-bottom: 1rem; }
+  .modal-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1.25rem; }
+  .project-link-btn { cursor: pointer; background: none; border: none; padding: 0; font: inherit; color: var(--blue); font-size: 0.82rem; font-weight: 600; display: flex; align-items: center; gap: 0.3rem; }
+  .project-link-btn:hover { text-decoration: underline; }
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">TĐH.</div>
+  <ul class="nav-links">
+    <li><a href="#about">Giới thiệu</a></li>
+    <li><a href="#projects">Dự án</a></li>
+    <li><a href="#timeline">Hành trình</a></li>
+    <li><a href="#contact">Liên hệ</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-text fade-in">
+    <div class="hero-badge">✨ Sinh viên Đại học Công Nghệ</div>
+    <h1>Trần <span>Đức</span><br>Hùng</h1>
+    <p class="hero-sub">
+      Sinh viên năm nhất Đại học Công Nghệ — ĐHQGHN. Đam mê công nghệ,
+      khám phá thế giới số và xây dựng những sản phẩm ý nghĩa trong thời đại số hóa.
+    </p>
+    <div class="hero-cta">
+      <a href="#projects" class="btn-primary">Xem dự án của tôi</a>
+      <a href="#contact" class="btn-outline">Liên hệ ngay</a>
+    </div>
+  </div>
+
+  <div class="hero-card fade-in" style="transition-delay:0.15s">
+    <div class="avatar" style="background:none;padding:0;overflow:hidden;">
+      <img src="data:image/png;base64,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" alt="Trần Đức Hùng" style="width:100%;height:100%;object-fit:cover;object-position:center top;">
+    </div>
+    <h3>Trần Đức Hùng</h3>
+    <p>Sinh viên Công Nghệ Thông Tin</p>
+    <ul class="info-list">
+      <li>
+        <div class="info-icon">🎂</div>
+        <span>24 tháng 07 năm 2007</span>
+      </li>
+      <li>
+        <div class="info-icon">🏛️</div>
+        <span>ĐHCN — ĐHQGHN</span>
+      </li>
+      <li>
+        <div class="info-icon">📍</div>
+        <span>Hà Nội, Việt Nam</span>
+      </li>
+      <li>
+        <div class="info-icon">🎓</div>
+        <span>Sinh viên Năm nhất (2025–2026)</span>
+      </li>
+      <li>
+        <div class="info-icon">🪪</div>
+        <span>MSSV: 25022671</span>
+      </li>
+      <li>
+        <div class="info-icon">⚙️</div>
+        <span>Kỹ thuật điều khiển và tự động hóa</span>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="fade-in">
+      <span class="section-tag">Về tôi</span>
+      <h2 class="section-title">Chào mừng đến Portfolio của tôi</h2>
+      <div class="about-text">
+        <p>
+          Tôi là Trần Đức Hùng, sinh ngày 24/07/2007, MSSV: 25022671, hiện đang là sinh viên năm nhất ngành
+          Kỹ thuật điều khiển và tự động hóa tại Trường Đại học Công Nghệ — Đại học Quốc Gia Hà Nội.
+        </p>
+        <p>
+          Tôi có niềm đam mê với lập trình, thiết kế giao diện và khám phá các công nghệ mới.
+          Với tinh thần ham học hỏi, tôi luôn nỗ lực trau dồi kiến thức và kỹ năng mỗi ngày.
+        </p>
+        <div class="goal-card">
+          <h4>🎯 Mục tiêu học tập</h4>
+          <p>Thể hiện các kỹ năng số đã học, lưu trữ sản phẩm cá nhân để dễ dàng truy cập và chia sẻ với mọi người, đồng thời xây dựng hành trình phát triển bản thân bền vững trong lĩnh vực công nghệ.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="fade-in" style="transition-delay:0.1s">
+      <div class="skills-wrap">
+        <div style="margin-bottom:1rem">
+          <span class="section-tag">Kỹ năng</span>
+          <h3 style="font-family:'Playfair Display',serif; font-size:1.4rem; margin-bottom:1.5rem;">Năng lực kỹ thuật số</h3>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header"><span class="skill-name">Khai thác dữ liệu & Thông tin</span><span class="skill-pct">80%</span></div>
+          <div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header"><span class="skill-name">Giao tiếp trong môi trường số</span><span class="skill-pct">75%</span></div>
+          <div class="skill-bar"><div class="skill-fill" style="width:75%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header"><span class="skill-name">Sáng tạo nội dung số</span><span class="skill-pct">70%</span></div>
+          <div class="skill-bar"><div class="skill-fill" style="width:70%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header"><span class="skill-name">An toàn & Liêm chính học thuật</span><span class="skill-pct">85%</span></div>
+          <div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header"><span class="skill-name">Trí tuệ nhân tạo cơ bản</span><span class="skill-pct">65%</span></div>
+          <div class="skill-bar"><div class="skill-fill" style="width:65%"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="fade-in">
+    <span class="section-tag">Dự án học tập</span>
+    <h2 class="section-title">Các bài tập đã hoàn thành</h2>
+    <p class="section-desc">Tổng hợp các bài tập và dự án trong quá trình học tập tại ĐHCN — ĐHQGHN.</p>
+  </div>
+
+  <div class="projects-grid">
+
+    <div class="project-card fade-in">
+      <div class="project-header">
+        <div class="project-icon" style="background:#E3F2FD">💻</div>
+        <span class="tag tag-blue">Bài 1</span>
+      </div>
+      <div class="project-body">
+        <h3>Máy tính và các thiết bị ngoại vi</h3>
+        <p>Tìm hiểu cấu trúc máy tính, vai trò các linh kiện phần cứng và cách các thiết bị ngoại vi kết nối, hoạt động trong hệ thống.</p>
+        <div class="project-tech">
+          <span class="tech-pill">Phần cứng</span>
+          <span class="tech-pill">Hệ thống máy tính</span>
+          <span class="tech-pill">Ngoại vi</span>
+        </div>
+      </div>
+      <div class="project-footer">
+        <button class="project-link-btn" onclick="window.location='bai1_may_tinh_ngoai_vi.html'">Xem chi tiết →</button>
+        <span class="project-date">Bài tập 1</span>
+      </div>
+    </div>
+
+    <div class="project-card fade-in" style="transition-delay:0.05s">
+      <div class="project-header">
+        <div class="project-icon" style="background:#FCE4EC">📊</div>
+        <span class="tag tag-pink">Bài 2</span>
+      </div>
+      <div class="project-body">
+        <h3>Khai thác dữ liệu và thông tin</h3>
+        <p>Thực hành tìm kiếm, đánh giá và khai thác dữ liệu từ nhiều nguồn khác nhau một cách có hiệu quả và đáng tin cậy.</p>
+        <div class="project-tech">
+          <span class="tech-pill">Dữ liệu</span>
+          <span class="tech-pill">Tìm kiếm thông tin</span>
+          <span class="tech-pill">Đánh giá nguồn</span>
+        </div>
+      </div>
+      <div class="project-footer">
+        <button class="project-link-btn" onclick="document.getElementById('modal-bai2').classList.add('open')">Xem chi tiết →</button>
+        <span class="project-date">Bài tập 2</span>
+      </div>
+    </div>
+
+    <div class="project-card fade-in" style="transition-delay:0.1s">
+      <div class="project-header">
+        <div class="project-icon" style="background:#E8F5E9">🤖</div>
+        <span class="tag tag-blue">Bài 3</span>
+      </div>
+      <div class="project-body">
+        <h3>Tổng quan về trí tuệ nhân tạo</h3>
+        <p>Nghiên cứu các khái niệm cơ bản về AI, Machine Learning, các ứng dụng thực tiễn và tác động của AI đến xã hội hiện đại.</p>
+        <div class="project-tech">
+          <span class="tech-pill">AI</span>
+          <span class="tech-pill">Machine Learning</span>
+          <span class="tech-pill">Đạo đức AI</span>
+        </div>
+      </div>
+      <div class="project-footer">
+        <button class="project-link-btn" onclick="document.getElementById('modal-bai3').classList.add('open')">Xem chi tiết →</button>
+        <span class="project-date">Bài tập 2</span>
+      </div>
+    </div>
+
+    <div class="project-card fade-in" style="transition-delay:0.15s">
+      <div class="project-header">
+        <div class="project-icon" style="background:#E3F2FD">🌐</div>
+        <span class="tag tag-dark">Bài 4</span>
+      </div>
+      <div class="project-body">
+        <h3>Giao tiếp và hợp tác số</h3>
+        <p>Học cách sử dụng các công cụ hợp tác trực tuyến, làm việc nhóm hiệu quả trong môi trường số và xây dựng kỹ năng giao tiếp chuyên nghiệp.</p>
+        <div class="project-tech">
+          <span class="tech-pill">Google Workspace</span>
+          <span class="tech-pill">Hợp tác nhóm</span>
+          <span class="tech-pill">Giao tiếp số</span>
+        </div>
+      </div>
+      <div class="project-footer">
+        <button class="project-link-btn" onclick="document.getElementById('modal-bai4').classList.add('open')">Xem chi tiết →</button>
+        <span class="project-date">Bài tập 3</span>
+      </div>
+    </div>
+
+    <div class="project-card fade-in" style="transition-delay:0.2s">
+      <div class="project-header">
+        <div class="project-icon" style="background:#FCE4EC">✏️</div>
+        <span class="tag tag-pink">Bài 5</span>
+      </div>
+      <div class="project-body">
+        <h3>Sáng tạo nội dung số</h3>
+        <p>Tạo và chỉnh sửa các loại nội dung số như văn bản, hình ảnh, video ngắn, bài thuyết trình với các công cụ kỹ thuật số hiện đại.</p>
+        <div class="project-tech">
+          <span class="tech-pill">Canva</span>
+          <span class="tech-pill">Nội dung số</span>
+          <span class="tech-pill">Thiết kế</span>
+        </div>
+      </div>
+      <div class="project-footer">
+        <button class="project-link-btn" onclick="document.getElementById('modal-bai5').classList.add('open')">Xem chi tiết →</button>
+        <span class="project-date">Bài tập 2</span>
+      </div>
+    </div>
+
+    <div class="project-card fade-in" style="transition-delay:0.25s">
+      <div class="project-header">
+        <div class="project-icon" style="background:#E8EAF6">🔐</div>
+        <span class="tag tag-blue">Bài 6</span>
+      </div>
+      <div class="project-body">
+        <h3>An toàn & Liêm chính học thuật</h3>
+        <p>Tìm hiểu về bảo mật thông tin cá nhân, phòng tránh các rủi ro trực tuyến và xây dựng ý thức liêm chính trong học thuật và nghiên cứu.</p>
+        <div class="project-tech">
+          <span class="tech-pill">An toàn mạng</span>
+          <span class="tech-pill">Bảo mật</span>
+          <span class="tech-pill">Đạo đức</span>
+        </div>
+      </div>
+      <div class="project-footer">
+        <button class="project-link-btn" onclick="document.getElementById('modal-bai6').classList.add('open')">Xem chi tiết →</button>
+        <span class="project-date">Bài tập 4</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section id="timeline">
+  <div class="fade-in" style="text-align:center; margin-bottom:3rem">
+    <span class="section-tag">Hành trình</span>
+    <h2 class="section-title">Quá trình học tập</h2>
+    <p class="section-desc" style="margin: 0 auto">Những cột mốc quan trọng trong hành trình học tập và phát triển bản thân của tôi.</p>
+  </div>
+  <div class="timeline">
+    <div class="timeline-item fade-in">
+      <div class="tl-dot">🎓</div>
+      <div class="tl-content">
+        <div class="tl-meta">2025 — Hiện tại</div>
+        <h4>Đại học Công Nghệ — ĐHQGHN</h4>
+        <p>Bắt đầu hành trình sinh viên ngành Công Nghệ Thông Tin. Học các kiến thức nền tảng về lập trình, toán rời rạc, và kỹ năng số.</p>
+      </div>
+    </div>
+    <div class="timeline-item fade-in" style="transition-delay:0.1s">
+      <div class="tl-dot">💡</div>
+      <div class="tl-content">
+        <div class="tl-meta">2025</div>
+        <h4>Dự án Portfolio cá nhân</h4>
+        <p>Xây dựng trang web portfolio đầu tiên để trình bày các bài tập và sản phẩm học tập, thể hiện kỹ năng số đã học được.</p>
+      </div>
+    </div>
+    <div class="timeline-item fade-in" style="transition-delay:0.2s">
+      <div class="tl-dot">🤖</div>
+      <div class="tl-content">
+        <div class="tl-meta">2025</div>
+        <h4>Khám phá Trí tuệ nhân tạo</h4>
+        <p>Nghiên cứu và tìm hiểu về AI, Machine Learning — một trong những lĩnh vực tôi đặc biệt quan tâm và muốn phát triển sâu hơn.</p>
+      </div>
+    </div>
+    <div class="timeline-item fade-in" style="transition-delay:0.3s">
+      <div class="tl-dot">🚀</div>
+      <div class="tl-content">
+        <div class="tl-meta">Tương lai</div>
+        <h4>Mục tiêu phát triển</h4>
+        <p>Trở thành một kỹ sư phần mềm chuyên nghiệp, đóng góp cho sự phát triển công nghệ tại Việt Nam và thế giới.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="fade-in" style="text-align:center; margin-bottom:3rem">
+    <span class="section-tag">Liên hệ</span>
+    <h2 class="section-title">Kết nối với tôi</h2>
+    <p class="section-desc" style="margin:0 auto">Bạn có muốn hợp tác hoặc trao đổi về công nghệ? Hãy liên hệ với tôi!</p>
+  </div>
+
+  <div class="contact-grid">
+    <div class="fade-in">
+      <div class="contact-item">
+        <div class="contact-icon-wrap ci-blue">📧</div>
+        <div>
+          <h4>Email</h4>
+          <p>tranhung240707@gmail.com</p>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon-wrap ci-pink">📍</div>
+        <div>
+          <h4>Địa chỉ</h4>
+          <p>Hà Nội, Việt Nam</p>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon-wrap ci-blue">🎓</div>
+        <div>
+          <h4>Trường học</h4>
+          <p>ĐH Công Nghệ — ĐHQGHN</p>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon-wrap ci-pink">🕐</div>
+        <div>
+          <h4>Năm học</h4>
+          <p>Sinh viên Năm nhất (2025–2026)</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="fade-in" style="transition-delay:0.1s">
+      <div class="contact-form">
+        <div class="form-group">
+          <label>Họ và tên</label>
+          <input type="text" placeholder="Nhập họ và tên của bạn">
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" placeholder="email@example.com">
+        </div>
+        <div class="form-group">
+          <label>Lời nhắn</label>
+          <textarea placeholder="Bạn muốn trao đổi về điều gì?"></textarea>
+        </div>
+        <button class="btn-primary" style="align-self:flex-start" onclick="alert('Cảm ơn bạn đã liên hệ! Tôi sẽ phản hồi sớm nhất có thể. 😊')">
+          Gửi lời nhắn ✉️
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 <span>Trần Đức Hùng</span> — Portfolio cá nhân. Được xây dựng với ❤️ tại Hà Nội.</p>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+document.querySelectorAll('.nav-links a').forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault();
+    const target = document.querySelector(link.getAttribute('href'));
+    if(target) target.scrollIntoView({ behavior: 'smooth' });
+  });
+});
+</script>
+
+<!-- MODAL BÀI 1 -->
+<div class="modal-overlay" id="modal-bai1" onclick="if(event.target===this)this.classList.remove('open')">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div>
+        <h2>💻 Máy tính và các thiết bị ngoại vi</h2>
+        <p>Bài tập 1 — MSSV: 25022671 — Trần Đức Hùng</p>
+      </div>
+      <button class="modal-close" onclick="document.getElementById('modal-bai1').classList.remove('open')">✕</button>
+    </div>
+    <div class="modal-body">
+      <p class="modal-intro">Bài thực hành về quản lý tệp tin và thư mục trên hệ điều hành Windows — thực hiện các thao tác cơ bản với File Explorer bao gồm tạo, sao chép, di chuyển và xóa tệp.</p>
+
+      <div class="modal-section-title">📋 Các bước thực hiện</div>
+      <ul class="step-list">
+        <li><div class="step-num">1</div><span><strong>Mở File Explorer:</strong> Nhấn tổ hợp phím Windows + E hoặc nhấp vào biểu tượng thư mục màu vàng trên thanh tác vụ.</span></li>
+        <li><div class="step-num">2</div><span><strong>Truy cập ổ đĩa/thư mục:</strong> Ở cột bên trái nhấp vào This PC, sau đó nhấp đúp vào một ổ đĩa không phải ổ hệ thống (ví dụ ổ D: hoặc E:). Nếu chỉ có ổ C: thì vào thư mục Documents.</span></li>
+        <li><div class="step-num">3</div><span><strong>Tạo thư mục mới:</strong> Nhấp chuột phải vào khoảng trống → New → Folder. Đặt tên thư mục là <em>ThucHanh_TranDucHung</em>. Nhấn Enter.</span></li>
+        <li><div class="step-num">4</div><span><strong>Vào thư mục vừa tạo:</strong> Nhấp đúp vào thư mục ThucHanh_TranDucHung.</span></li>
+        <li><div class="step-num">5</div><span><strong>Tạo tệp tin văn bản:</strong> Nhấp chuột phải → New → Text Document. Đặt tên là <em>GhiChu.txt</em>. Nhấn Enter.</span></li>
+        <li><div class="step-num">6</div><span><strong>Đổi tên tệp tin:</strong> Nhấp chuột phải vào tệp GhiChu.txt → Rename. Đổi tên thành <em>GhiChuQuanTrong.txt</em>. Nhấn Enter.</span></li>
+        <li><div class="step-num">7</div><span><strong>Tạo thư mục con:</strong> Trong thư mục ThucHanh_TranDucHung, nhấp chuột phải → New → Folder. Đặt tên là <em>TaiLieu</em>.</span></li>
+        <li><div class="step-num">8</div><span><strong>Sao chép tệp tin (Copy &amp; Paste):</strong> Nhấp chuột phải vào GhiChuQuanTrong.txt → Copy (hoặc Ctrl + C). Vào thư mục TaiLieu, nhấp chuột phải → Paste (hoặc Ctrl + V). Bây giờ có một bản sao trong TaiLieu.</span></li>
+        <li><div class="step-num">9</div><span><strong>Di chuyển tệp tin (Cut &amp; Paste):</strong> Quay lại ThucHanh_TranDucHung, tạo tệp mới tên <em>DiChuyen.txt</em>. Nhấp chuột phải → Cut (Ctrl + X), vào TaiLieu → Paste (Ctrl + V). Tệp gốc biến mất khỏi vị trí cũ.</span></li>
+        <li><div class="step-num">10</div><span><strong>Xóa tệp tin:</strong> Trong thư mục TaiLieu, nhấp chuột phải vào GhiChuQuanTrong.txt → Delete. Tệp được chuyển vào Thùng rác (Recycle Bin).</span></li>
+        <li><div class="step-num">11</div><span><strong>Xóa vĩnh viễn:</strong> Chọn tệp DiChuyen.txt, nhấn giữ Shift + Delete. Xác nhận → tệp bị xóa vĩnh viễn, không qua Thùng rác.</span></li>
+        <li><div class="step-num">12</div><span><strong>Khôi phục từ Thùng rác:</strong> Mở Recycle Bin, tìm GhiChuQuanTrong.txt, nhấp chuột phải → Restore. Tệp quay trở lại vị trí ban đầu.</span></li>
+      </ul>
+
+      <div class="modal-tags">
+        <span class="tech-pill">File Explorer</span>
+        <span class="tech-pill">Windows</span>
+        <span class="tech-pill">Quản lý tệp tin</span>
+        <span class="tech-pill">Thư mục</span>
+        <span class="tech-pill">Recycle Bin</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- MODAL BÀI 3 -->
+<div class="modal-overlay" id="modal-bai3" onclick="if(event.target===this)this.classList.remove('open')">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div>
+        <h2>🤖 Phân tích Prompt Engineering trong học tập với AI</h2>
+        <p>Bài tập 2 — Bài 3 — MSSV: 25022671 — Trần Đức Hùng</p>
+      </div>
+      <button class="modal-close" onclick="document.getElementById('modal-bai3').classList.remove('open')">✕</button>
+    </div>
+    <div class="modal-body">
+
+      <div class="modal-section-title">I. Giới thiệu</div>
+      <p class="modal-intro">Báo cáo thử nghiệm và phân tích Prompt Engineering trong học tập với AI — Môn học: Ứng dụng Trí tuệ nhân tạo trong học tập.</p>
+      <p class="modal-intro">Các công cụ AI như ChatGPT, Google Gemini hay Microsoft Copilot ngày càng được sử dụng rộng rãi trong học tập. Hiệu quả của AI phụ thuộc rất lớn vào cách người dùng đặt câu lệnh (prompt). Prompt rõ ràng và có cấu trúc giúp AI tạo ra phản hồi chính xác, logic và phù hợp hơn; ngược lại, prompt mơ hồ thường dẫn đến kết quả chung chung hoặc thiếu chính xác.</p>
+
+      <div class="modal-section-title">II. Mục tiêu thực hiện</div>
+      <ul class="step-list">
+        <li><div class="step-num">1</div><span>Tìm hiểu cách hoạt động của prompt trong AI.</span></li>
+        <li><div class="step-num">2</div><span>So sánh hiệu quả giữa prompt cơ bản, cải tiến và nâng cao.</span></li>
+        <li><div class="step-num">3</div><span>Phân tích mối liên hệ giữa cấu trúc prompt và chất lượng phản hồi.</span></li>
+        <li><div class="step-num">4</div><span>Rút ra các nguyên tắc viết prompt hiệu quả phục vụ học tập.</span></li>
+      </ul>
+
+      <div class="modal-section-title">III. Ba tác vụ học tập được thử nghiệm</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:0.75rem;margin-bottom:1rem;">
+        <div style="background:var(--blue-pale);border-radius:12px;padding:1rem;">
+          <div style="font-size:1.3rem;margin-bottom:0.4rem;">📄</div>
+          <strong style="font-size:0.88rem;">Tóm tắt tài liệu</strong>
+          <p style="font-size:0.8rem;color:var(--gray);margin:0.3rem 0 0;">Rút gọn bài báo khoa học, xác định ý chính nhanh chóng</p>
+        </div>
+        <div style="background:var(--pink-pale);border-radius:12px;padding:1rem;">
+          <div style="font-size:1.3rem;margin-bottom:0.4rem;">💡</div>
+          <strong style="font-size:0.88rem;">Giải thích khái niệm</strong>
+          <p style="font-size:0.8rem;color:var(--gray);margin:0.3rem 0 0;">Đơn giản hoá kiến thức phức tạp như blockchain, machine learning</p>
+        </div>
+        <div style="background:#E8F5E9;border-radius:12px;padding:1rem;">
+          <div style="font-size:1.3rem;margin-bottom:0.4rem;">📝</div>
+          <strong style="font-size:0.88rem;">Tạo câu hỏi ôn tập</strong>
+          <p style="font-size:0.8rem;color:var(--gray);margin:0.3rem 0 0;">Tạo bộ câu hỏi để ôn luyện trước kỳ thi</p>
+        </div>
+      </div>
+
+      <div class="modal-section-title">IV. So sánh 3 cấp độ Prompt</div>
+
+      <!-- Tác vụ 1 -->
+      <p style="font-weight:600;font-size:0.9rem;margin-bottom:0.5rem;color:var(--black);">📄 Tóm tắt tài liệu học thuật</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0.6rem;margin-bottom:1.25rem;">
+        <div style="border:1px solid var(--border);border-radius:10px;padding:0.9rem;">
+          <div style="font-size:0.72rem;font-weight:700;color:var(--gray);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.4rem;">Cơ bản</div>
+          <p style="font-size:0.82rem;font-style:italic;color:var(--blue);margin-bottom:.4rem;">"Hãy tóm tắt bài viết về biến đổi khí hậu."</p>
+          <p style="font-size:0.8rem;color:var(--gray);margin:0;">⚠️ Ngắn, chung chung, thiếu cấu trúc</p>
+        </div>
+        <div style="border:1px solid var(--border);border-radius:10px;padding:0.9rem;">
+          <div style="font-size:0.72rem;font-weight:700;color:var(--gray);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.4rem;">Cải tiến</div>
+          <p style="font-size:0.82rem;font-style:italic;color:var(--blue);margin-bottom:.4rem;">"Tóm tắt trong 200 từ, nêu nguyên nhân, hậu quả, giải pháp."</p>
+          <p style="font-size:0.8rem;color:var(--gray);margin:0;">✅ Có cấu trúc, đầy đủ hơn</p>
+        </div>
+        <div style="border:1px solid var(--blue);border-radius:10px;padding:0.9rem;background:var(--blue-pale);">
+          <div style="font-size:0.72rem;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.4rem;">Nâng cao ⭐</div>
+          <p style="font-size:0.82rem;font-style:italic;color:var(--blue);margin-bottom:.4rem;">"Bạn là giảng viên môi trường. Tóm tắt 200 từ, 3 nguyên nhân, 3 hậu quả, 2 giải pháp, viết cho SV năm nhất."</p>
+          <p style="font-size:0.8rem;color:var(--blue);margin:0;font-weight:600;">🏆 Đầy đủ, logic, chuyên nghiệp</p>
+        </div>
+      </div>
+
+      <!-- Tác vụ 2 -->
+      <p style="font-weight:600;font-size:0.9rem;margin-bottom:0.5rem;color:var(--black);">💡 Giải thích khái niệm phức tạp (Blockchain)</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0.6rem;margin-bottom:1.25rem;">
+        <div style="border:1px solid var(--border);border-radius:10px;padding:0.9rem;">
+          <div style="font-size:0.72rem;font-weight:700;color:var(--gray);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.4rem;">Cơ bản</div>
+          <p style="font-size:0.82rem;font-style:italic;color:var(--blue);margin-bottom:.4rem;">"Giải thích blockchain là gì."</p>
+          <p style="font-size:0.8rem;color:var(--gray);margin:0;">⚠️ Chính xác nhưng nhiều thuật ngữ, khó hiểu</p>
+        </div>
+        <div style="border:1px solid var(--border);border-radius:10px;padding:0.9rem;">
+          <div style="font-size:0.72rem;font-weight:700;color:var(--gray);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.4rem;">Cải tiến</div>
+          <p style="font-size:0.82rem;font-style:italic;color:var(--blue);margin-bottom:.4rem;">"Giải thích đơn giản cho học sinh cấp 3 và đưa ví dụ thực tế."</p>
+          <p style="font-size:0.8rem;color:var(--gray);margin:0;">✅ Dễ tiếp cận, có ví dụ minh hoạ</p>
+        </div>
+        <div style="border:1px solid var(--blue);border-radius:10px;padding:0.9rem;background:var(--blue-pale);">
+          <div style="font-size:0.72rem;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.4rem;">Nâng cao ⭐</div>
+          <p style="font-size:0.82rem;font-style:italic;color:var(--blue);margin-bottom:.4rem;">"Bạn là GV CNTT. Giải thích từng bước, so sánh với sổ ghi chép, ví dụ thanh toán điện tử, tóm tắt 5 ý."</p>
+          <p style="font-size:0.8rem;color:var(--blue);margin:0;font-weight:600;">🏆 Rất dễ hiểu, có hệ thống</p>
+        </div>
+      </div>
+
+      <!-- Tác vụ 3 -->
+      <p style="font-weight:600;font-size:0.9rem;margin-bottom:0.5rem;color:var(--black);">📝 Tạo bộ câu hỏi ôn tập</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0.6rem;margin-bottom:1.25rem;">
+        <div style="border:1px solid var(--border);border-radius:10px;padding:0.9rem;">
+          <div style="font-size:0.72rem;font-weight:700;color:var(--gray);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.4rem;">Cơ bản</div>
+          <p style="font-size:0.82rem;font-style:italic;color:var(--blue);margin-bottom:.4rem;">"Hãy tạo câu hỏi ôn tập môn lịch sử."</p>
+          <p style="font-size:0.8rem;color:var(--gray);margin:0;">⚠️ Chung chung, thiếu đáp án</p>
+        </div>
+        <div style="border:1px solid var(--border);border-radius:10px;padding:0.9rem;">
+          <div style="font-size:0.72rem;font-weight:700;color:var(--gray);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.4rem;">Cải tiến</div>
+          <p style="font-size:0.82rem;font-style:italic;color:var(--blue);margin-bottom:.4rem;">"10 câu trắc nghiệm Lịch sử 12 về CM tháng Tám, kèm đáp án."</p>
+          <p style="font-size:0.8rem;color:var(--gray);margin:0;">✅ Đúng trọng tâm, có đáp án cụ thể</p>
+        </div>
+        <div style="border:1px solid var(--blue);border-radius:10px;padding:0.9rem;background:var(--blue-pale);">
+          <div style="font-size:0.72rem;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.4rem;">Nâng cao ⭐</div>
+          <p style="font-size:0.82rem;font-style:italic;color:var(--blue);margin-bottom:.4rem;">"Bạn là GV luyện thi THPT. 10 câu, phân mức dễ/TB/khó, kèm đáp án, giải thích và tóm tắt trọng tâm."</p>
+          <p style="font-size:0.8rem;color:var(--blue);margin:0;font-weight:600;">🏆 Như tài liệu ôn thi thực tế</p>
+        </div>
+      </div>
+
+      <div class="modal-section-title">V. Các kỹ thuật Prompt Engineering hiệu quả</div>
+      <ul class="step-list">
+        <li><div class="step-num" style="background:var(--pink);">A</div><span><strong>Role Prompting:</strong> Gán vai trò cho AI — "Bạn là giáo viên…" / "Bạn là giảng viên…" — giúp AI phản hồi chuyên nghiệp và có định hướng hơn.</span></li>
+        <li><div class="step-num" style="background:var(--pink);">B</div><span><strong>Structured Prompting:</strong> Chia yêu cầu thành từng bước giúp AI trả lời logic, không bỏ sót ý và dễ theo dõi.</span></li>
+        <li><div class="step-num" style="background:var(--pink);">C</div><span><strong>Audience Specification:</strong> Xác định người đọc (sinh viên năm nhất, học sinh cấp 3…) để AI tự điều chỉnh độ khó phù hợp.</span></li>
+        <li><div class="step-num" style="background:var(--pink);">D</div><span><strong>Output Formatting:</strong> Yêu cầu định dạng cụ thể (danh sách, bảng, bullet points…) giúp kết quả trực quan và dễ học hơn.</span></li>
+      </ul>
+
+      <div class="modal-section-title">VI. Nguyên tắc viết Prompt hiệu quả</div>
+      <ul class="step-list">
+        <li><div class="step-num">1</div><span><strong>Xác định rõ mục tiêu:</strong> Thay vì "Giải thích AI", hãy viết "Giải thích AI bằng ngôn ngữ đơn giản cho học sinh lớp 10."</span></li>
+        <li><div class="step-num">2</div><span><strong>Cung cấp ngữ cảnh:</strong> Cho AI biết vai trò — "Bạn là giáo viên vật lý." / "Bạn là chuyên gia môi trường."</span></li>
+        <li><div class="step-num">3</div><span><strong>Chia yêu cầu thành từng bước:</strong> Prompt có cấu trúc (giải thích → ví dụ → tóm tắt) cho kết quả logic hơn.</span></li>
+        <li><div class="step-num">4</div><span><strong>Chỉ định định dạng đầu ra:</strong> Yêu cầu bảng, bullet points hoặc đoạn văn ngắn giúp phản hồi dễ đọc hơn.</span></li>
+        <li><div class="step-num">5</div><span><strong>Xác định đối tượng người học:</strong> AI sẽ tự điều chỉnh cách diễn đạt phù hợp với trình độ người học.</span></li>
+        <li><div class="step-num">6</div><span><strong>Kết hợp nhiều kỹ thuật:</strong> Prompt tốt nhất thường kết hợp Role prompting + Structured prompting + Audience specification + Few-shot prompting.</span></li>
+      </ul>
+
+      <div class="modal-section-title">VII. Kết luận</div>
+      <p class="modal-intro">Prompt ảnh hưởng trực tiếp đến chất lượng phản hồi của AI. Prompt càng rõ ràng và có cấu trúc thì phản hồi càng chính xác, logic và hữu ích. Prompt nâng cao cho kết quả tốt nhất nhờ áp dụng nhiều kỹ thuật prompt engineering.</p>
+      <p class="modal-intro" style="margin:0;">Kỹ năng viết prompt là một kỹ năng quan trọng trong thời đại AI — sinh viên không chỉ cần biết sử dụng AI mà còn cần biết cách giao tiếp hiệu quả với AI để tận dụng tối đa lợi ích của công nghệ.</p>
+
+      <div class="modal-tags">
+        <span class="tech-pill">Prompt Engineering</span>
+        <span class="tech-pill">ChatGPT</span>
+        <span class="tech-pill">Google Gemini</span>
+        <span class="tech-pill">Role Prompting</span>
+        <span class="tech-pill">Structured Prompting</span>
+        <span class="tech-pill">Trí tuệ nhân tạo</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- MODAL BÀI 4 -->
+<div class="modal-overlay" id="modal-bai4" onclick="if(event.target===this)this.classList.remove('open')">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div>
+        <h2>🌐 Báo cáo: Trải nghiệm sử dụng công cụ hợp tác trực tuyến</h2>
+        <p>Bài tập 3 — Bài 4 — MSSV: 25022671 — Trần Đức Hùng</p>
+      </div>
+      <button class="modal-close" onclick="document.getElementById('modal-bai4').classList.remove('open')">✕</button>
+    </div>
+    <div class="modal-body">
+
+      <div class="modal-section-title">I. Giới thiệu dự án</div>
+      <p class="modal-intro">Nhóm thực hiện dự án nhỏ với chủ đề <strong>"Thiết kế infographic về tác động của AI tạo sinh đối với sinh viên đại học"</strong>. Trong quá trình làm việc nhóm, em đảm nhận vai trò tổng hợp nội dung, quản lý tiến độ cá nhân và hỗ trợ thiết kế tài liệu.</p>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:0.6rem;margin-bottom:1.25rem;">
+        <div style="background:var(--blue-pale);border-radius:10px;padding:0.8rem;text-align:center;">
+          <div style="font-size:1.4rem;">📋</div>
+          <div style="font-size:0.8rem;font-weight:600;margin-top:0.3rem;">Trello</div>
+          <div style="font-size:0.72rem;color:var(--gray);">Quản lý nhiệm vụ</div>
+        </div>
+        <div style="background:var(--pink-pale);border-radius:10px;padding:0.8rem;text-align:center;">
+          <div style="font-size:1.4rem;">📄</div>
+          <div style="font-size:0.8rem;font-weight:600;margin-top:0.3rem;">Google Docs</div>
+          <div style="font-size:0.72rem;color:var(--gray);">Soạn thảo cộng tác</div>
+        </div>
+        <div style="background:#E8F5E9;border-radius:10px;padding:0.8rem;text-align:center;">
+          <div style="font-size:1.4rem;">☁️</div>
+          <div style="font-size:0.8rem;font-weight:600;margin-top:0.3rem;">Google Drive</div>
+          <div style="font-size:0.72rem;color:var(--gray);">Lưu trữ & chia sẻ</div>
+        </div>
+        <div style="background:#EDE7F6;border-radius:10px;padding:0.8rem;text-align:center;">
+          <div style="font-size:1.4rem;">💬</div>
+          <div style="font-size:0.8rem;font-weight:600;margin-top:0.3rem;">Discord</div>
+          <div style="font-size:0.72rem;color:var(--gray);">Trao đổi nhóm</div>
+        </div>
+      </div>
+
+      <div class="modal-section-title">II. Quá trình sử dụng các công cụ</div>
+
+      <!-- Trello -->
+      <div style="border:1px solid var(--border);border-radius:14px;padding:1.25rem;margin-bottom:0.9rem;">
+        <div style="display:flex;align-items:center;gap:0.6rem;margin-bottom:0.75rem;">
+          <div style="width:36px;height:36px;background:var(--blue-pale);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;">📋</div>
+          <strong style="font-size:0.95rem;">1. Trello — Quản lý dự án</strong>
+        </div>
+        <p style="font-size:0.87rem;color:var(--gray);line-height:1.65;margin-bottom:0.6rem;">Phân chia nhiệm vụ và theo dõi tiến độ. Em được giao: tổng hợp tài liệu tham khảo, viết nội dung phần "Lợi ích của AI", kiểm tra lỗi trình bày infographic. Mỗi nhiệm vụ có mô tả, deadline, tag màu ưu tiên và checklist đầu việc nhỏ. Em thường xuyên cập nhật trạng thái từ "To Do" → "Doing" → "Done".</p>
+        <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
+          <span style="font-size:0.78rem;background:#E3F2FD;color:var(--blue);padding:0.25rem 0.6rem;border-radius:100px;">✅ Dễ theo dõi tiến độ</span>
+          <span style="font-size:0.78rem;background:#E3F2FD;color:var(--blue);padding:0.25rem 0.6rem;border-radius:100px;">✅ Hạn chế quên deadline</span>
+          <span style="font-size:0.78rem;background:#FCE4EC;color:var(--pink);padding:0.25rem 0.6rem;border-radius:100px;">⚠️ Cần làm quen Kanban</span>
+        </div>
+      </div>
+
+      <!-- Google Docs -->
+      <div style="border:1px solid var(--border);border-radius:14px;padding:1.25rem;margin-bottom:0.9rem;">
+        <div style="display:flex;align-items:center;gap:0.6rem;margin-bottom:0.75rem;">
+          <div style="width:36px;height:36px;background:var(--pink-pale);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;">📄</div>
+          <strong style="font-size:0.95rem;">2. Google Docs — Soạn thảo cộng tác</strong>
+        </div>
+        <p style="font-size:0.87rem;color:var(--gray);line-height:1.65;margin-bottom:0.6rem;">Cùng biên soạn nội dung báo cáo và infographic theo thời gian thực. Em chỉnh sửa các phần: Mở đầu dự án, Tác động tích cực của AI, Tổng kết và đề xuất. Sử dụng Comment để góp ý, Suggesting mode để chỉnh sửa an toàn, và Lịch sử phiên bản để theo dõi thay đổi.</p>
+        <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
+          <span style="font-size:0.78rem;background:#FCE4EC;color:var(--pink);padding:0.25rem 0.6rem;border-radius:100px;">✅ Cập nhật thời gian thực</span>
+          <span style="font-size:0.78rem;background:#FCE4EC;color:var(--pink);padding:0.25rem 0.6rem;border-radius:100px;">✅ Giảm gửi file qua lại</span>
+          <span style="font-size:0.78rem;background:#FCE4EC;color:var(--pink);padding:0.25rem 0.6rem;border-radius:100px;">⚠️ Dễ chỉnh sửa chồng chéo</span>
+        </div>
+      </div>
+
+      <!-- Google Drive -->
+      <div style="border:1px solid var(--border);border-radius:14px;padding:1.25rem;margin-bottom:0.9rem;">
+        <div style="display:flex;align-items:center;gap:0.6rem;margin-bottom:0.75rem;">
+          <div style="width:36px;height:36px;background:#E8F5E9;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;">☁️</div>
+          <strong style="font-size:0.95rem;">3. Google Drive — Lưu trữ & chia sẻ tài liệu</strong>
+        </div>
+        <p style="font-size:0.87rem;color:var(--gray);line-height:1.65;margin-bottom:0.6rem;">Hệ thống thư mục gồm: Tài liệu tham khảo / Nội dung báo cáo / Hình ảnh infographic / File hoàn thiện. Quy tắc đặt tên: <strong>TenNhom_NoiDung_NgayThang</strong> (ví dụ: Nhom3_BaoCaoAI_20-05). Thiết lập quyền "Viewer" cho thành viên chỉ xem và "Editor" cho người chỉnh sửa.</p>
+        <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
+          <span style="font-size:0.78rem;background:#E8F5E9;color:#2E7D32;padding:0.25rem 0.6rem;border-radius:100px;">✅ Sắp xếp khoa học</span>
+          <span style="font-size:0.78rem;background:#E8F5E9;color:#2E7D32;padding:0.25rem 0.6rem;border-radius:100px;">✅ Hạn chế mất dữ liệu</span>
+          <span style="font-size:0.78rem;background:#E8F5E9;color:#2E7D32;padding:0.25rem 0.6rem;border-radius:100px;">⚠️ Phụ thuộc internet</span>
+        </div>
+      </div>
+
+      <!-- Discord -->
+      <div style="border:1px solid var(--border);border-radius:14px;padding:1.25rem;margin-bottom:1.25rem;">
+        <div style="display:flex;align-items:center;gap:0.6rem;margin-bottom:0.75rem;">
+          <div style="width:36px;height:36px;background:#EDE7F6;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;">💬</div>
+          <strong style="font-size:0.95rem;">4. Discord — Giao tiếp nhóm</strong>
+        </div>
+        <p style="font-size:0.87rem;color:var(--gray);line-height:1.65;margin-bottom:0.6rem;">Sử dụng để họp online, thảo luận công việc, thông báo deadline và chia sẻ tài liệu nhanh. Em chủ động tham gia thảo luận, hỗ trợ thành viên chỉnh sửa nội dung và nhắc tiến độ. Sử dụng voice channel để họp nhanh khi cần thống nhất ý tưởng thiết kế. Ghim các thông báo deadline quan trọng và bật thông báo ưu tiên.</p>
+        <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
+          <span style="font-size:0.78rem;background:#EDE7F6;color:#4527A0;padding:0.25rem 0.6rem;border-radius:100px;">✅ Giao tiếp nhanh chóng</span>
+          <span style="font-size:0.78rem;background:#EDE7F6;color:#4527A0;padding:0.25rem 0.6rem;border-radius:100px;">✅ Tăng kết nối nhóm</span>
+          <span style="font-size:0.78rem;background:#EDE7F6;color:#4527A0;padding:0.25rem 0.6rem;border-radius:100px;">⚠️ Dễ bỏ sót tin nhắn</span>
+        </div>
+      </div>
+
+      <div class="modal-section-title">III. Bảng đánh giá hiệu quả</div>
+      <div style="overflow-x:auto;margin-bottom:1.25rem;">
+        <table style="width:100%;border-collapse:collapse;font-size:0.85rem;">
+          <thead>
+            <tr style="background:var(--blue);color:#fff;">
+              <th style="padding:0.7rem 1rem;text-align:left;border-radius:8px 0 0 0;">Công cụ</th>
+              <th style="padding:0.7rem 1rem;text-align:left;">Ưu điểm</th>
+              <th style="padding:0.7rem 1rem;text-align:left;border-radius:0 8px 0 0;">Hạn chế</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid var(--gray-light);">
+              <td style="padding:0.7rem 1rem;font-weight:600;">📋 Trello</td>
+              <td style="padding:0.7rem 1rem;color:var(--gray);">Quản lý tiến độ rõ ràng</td>
+              <td style="padding:0.7rem 1rem;color:var(--gray);">Cần thời gian làm quen</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--gray-light);background:var(--gray-light);">
+              <td style="padding:0.7rem 1rem;font-weight:600;">📄 Google Docs</td>
+              <td style="padding:0.7rem 1rem;color:var(--gray);">Chỉnh sửa thời gian thực</td>
+              <td style="padding:0.7rem 1rem;color:var(--gray);">Dễ bị chỉnh sửa chồng chéo</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--gray-light);">
+              <td style="padding:0.7rem 1rem;font-weight:600;">☁️ Google Drive</td>
+              <td style="padding:0.7rem 1rem;color:var(--gray);">Lưu trữ khoa học</td>
+              <td style="padding:0.7rem 1rem;color:var(--gray);">Phụ thuộc internet</td>
+            </tr>
+            <tr>
+              <td style="padding:0.7rem 1rem;font-weight:600;">💬 Discord</td>
+              <td style="padding:0.7rem 1rem;color:var(--gray);">Giao tiếp nhanh</td>
+              <td style="padding:0.7rem 1rem;color:var(--gray);">Dễ bị loãng thông tin</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="modal-section-title">IV. Kết luận</div>
+      <p class="modal-intro">Các công cụ hợp tác trực tuyến đóng vai trò rất quan trọng trong học tập và làm việc nhóm hiện nay — không chỉ giúp tiết kiệm thời gian mà còn nâng cao khả năng phối hợp, quản lý tiến độ và chia sẻ thông tin hiệu quả.</p>
+      <p class="modal-intro" style="margin:0;">Qua dự án này, em học được cách quản lý công việc cá nhân, làm việc cộng tác trực tuyến, giao tiếp và hỗ trợ thành viên, tổ chức tài liệu một cách khoa học — những kỹ năng số thiết yếu trong môi trường học tập hiện đại.</p>
+
+      <div class="modal-tags">
+        <span class="tech-pill">Trello</span>
+        <span class="tech-pill">Google Docs</span>
+        <span class="tech-pill">Google Drive</span>
+        <span class="tech-pill">Discord</span>
+        <span class="tech-pill">Làm việc nhóm</span>
+        <span class="tech-pill">Kỹ năng số</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- MODAL BÀI 2 -->
+<div class="modal-overlay" id="modal-bai2" onclick="if(event.target===this)this.classList.remove('open')">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div>
+        <h2>📊 Tìm kiếm, đánh giá và tổng hợp nguồn thông tin học thuật</h2>
+        <p>Bài tập 2 — Bài 2 — MSSV: 25022671 — Trần Đức Hùng</p>
+      </div>
+      <button class="modal-close" onclick="document.getElementById('modal-bai2').classList.remove('open')">✕</button>
+    </div>
+    <div class="modal-body">
+
+      <div class="modal-section-title">I. Giới thiệu</div>
+      <p class="modal-intro">Chủ đề nghiên cứu: <strong>"Ứng dụng Generative AI trong giáo dục đại học"</strong>. Sự phát triển mạnh mẽ của AI tạo sinh (GenAI) như ChatGPT, Gemini, Copilot đã tạo ra nhiều thay đổi trong môi trường giáo dục đại học — hỗ trợ sinh viên trong học tập, tìm kiếm thông tin, lập trình, viết báo cáo và nghiên cứu khoa học, đồng thời đặt ra thách thức về đạo đức học thuật và phương pháp đánh giá.</p>
+
+      <div class="modal-section-title">II. Phạm vi & Phương pháp tìm kiếm</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-bottom:1.25rem;">
+        <div style="background:var(--blue-pale);border-radius:12px;padding:1rem;">
+          <div style="font-size:0.78rem;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.5rem;">📚 Nguồn tìm kiếm</div>
+          <ul style="font-size:0.82rem;color:var(--black);list-style:none;display:flex;flex-direction:column;gap:.3rem;">
+            <li>• Google Scholar, SSRN, arXiv</li>
+            <li>• Frontiers, Springer Nature</li>
+            <li>• ScienceDirect, MDPI</li>
+            <li>• Sách chuyên khảo & website học thuật</li>
+          </ul>
+        </div>
+        <div style="background:var(--pink-pale);border-radius:12px;padding:1rem;">
+          <div style="font-size:0.78rem;font-weight:700;color:var(--pink);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.5rem;">🔍 Từ khóa</div>
+          <ul style="font-size:0.82rem;color:var(--black);list-style:none;display:flex;flex-direction:column;gap:.3rem;">
+            <li>• "Generative AI in higher education"</li>
+            <li>• "AI chatbot learning outcomes"</li>
+            <li>• "GenAI assessment in universities"</li>
+            <li>• "AI and academic integrity"</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="modal-section-title">III. Bảng tổng hợp & đánh giá nguồn (12 tài liệu)</div>
+      <div style="overflow-x:auto;margin-bottom:1.25rem;">
+        <table style="width:100%;border-collapse:collapse;font-size:0.8rem;min-width:580px;">
+          <thead>
+            <tr style="background:var(--blue);color:#fff;">
+              <th style="padding:0.6rem 0.75rem;text-align:left;border-radius:8px 0 0 0;white-space:nowrap;">#</th>
+              <th style="padding:0.6rem 0.75rem;text-align:left;">Tài liệu</th>
+              <th style="padding:0.6rem 0.75rem;text-align:left;white-space:nowrap;">Loại nguồn</th>
+              <th style="padding:0.6rem 0.75rem;text-align:left;border-radius:0 8px 0 0;white-space:nowrap;">Độ tin cậy</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid var(--gray-light);">
+              <td style="padding:0.6rem 0.75rem;color:var(--gray);">1</td>
+              <td style="padding:0.6rem 0.75rem;">Fan et al. (2026) – <em>GenAI on learning outcomes</em>, Frontiers</td>
+              <td style="padding:0.6rem 0.75rem;white-space:nowrap;">Bài báo KH</td>
+              <td style="padding:0.6rem 0.75rem;"><span style="background:#E8F5E9;color:#2E7D32;padding:.2rem .5rem;border-radius:100px;font-size:.75rem;font-weight:600;">Rất cao</span></td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--gray-light);background:var(--gray-light);">
+              <td style="padding:0.6rem 0.75rem;color:var(--gray);">2</td>
+              <td style="padding:0.6rem 0.75rem;">Xia et al. (2024) – <em>GenAI transforms assessment</em>, Springer</td>
+              <td style="padding:0.6rem 0.75rem;white-space:nowrap;">Bài báo KH</td>
+              <td style="padding:0.6rem 0.75rem;"><span style="background:#E8F5E9;color:#2E7D32;padding:.2rem .5rem;border-radius:100px;font-size:.75rem;font-weight:600;">Rất cao</span></td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--gray-light);">
+              <td style="padding:0.6rem 0.75rem;color:var(--gray);">3</td>
+              <td style="padding:0.6rem 0.75rem;">Molerov et al. (2026) – <em>AI-chatbots & learning outcomes</em>, Springer</td>
+              <td style="padding:0.6rem 0.75rem;white-space:nowrap;">Bài báo KH</td>
+              <td style="padding:0.6rem 0.75rem;"><span style="background:#E3F2FD;color:var(--blue);padding:.2rem .5rem;border-radius:100px;font-size:.75rem;font-weight:600;">Cao</span></td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--gray-light);background:var(--gray-light);">
+              <td style="padding:0.6rem 0.75rem;color:var(--gray);">4</td>
+              <td style="padding:0.6rem 0.75rem;">Pang & Wei (2025) – <em>Future of Higher Education</em>, MDPI</td>
+              <td style="padding:0.6rem 0.75rem;white-space:nowrap;">Bài báo KH</td>
+              <td style="padding:0.6rem 0.75rem;"><span style="background:#E3F2FD;color:var(--blue);padding:.2rem .5rem;border-radius:100px;font-size:.75rem;font-weight:600;">Cao</span></td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--gray-light);">
+              <td style="padding:0.6rem 0.75rem;color:var(--gray);">5</td>
+              <td style="padding:0.6rem 0.75rem;">Dotan et al. (2024) – <em>Responsible Adoption of GenAI</em>, arXiv</td>
+              <td style="padding:0.6rem 0.75rem;white-space:nowrap;">arXiv</td>
+              <td style="padding:0.6rem 0.75rem;"><span style="background:#FFF8E1;color:#F57F17;padding:.2rem .5rem;border-radius:100px;font-size:.75rem;font-weight:600;">Khá cao</span></td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--gray-light);background:var(--gray-light);">
+              <td style="padding:0.6rem 0.75rem;color:var(--gray);">6</td>
+              <td style="padding:0.6rem 0.75rem;">McDonald et al. (2024) – <em>Institutional Policies & Guidelines</em>, arXiv</td>
+              <td style="padding:0.6rem 0.75rem;white-space:nowrap;">arXiv</td>
+              <td style="padding:0.6rem 0.75rem;"><span style="background:#E3F2FD;color:var(--blue);padding:.2rem .5rem;border-radius:100px;font-size:.75rem;font-weight:600;">Cao</span></td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--gray-light);">
+              <td style="padding:0.6rem 0.75rem;color:var(--gray);">7</td>
+              <td style="padding:0.6rem 0.75rem;">Contractor & Reyes (2025) – <em>Evidence from an Elite College</em>, SSRN</td>
+              <td style="padding:0.6rem 0.75rem;white-space:nowrap;">SSRN</td>
+              <td style="padding:0.6rem 0.75rem;"><span style="background:#E3F2FD;color:var(--blue);padding:.2rem .5rem;border-radius:100px;font-size:.75rem;font-weight:600;">Cao</span></td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--gray-light);background:var(--gray-light);">
+              <td style="padding:0.6rem 0.75rem;color:var(--gray);">8</td>
+              <td style="padding:0.6rem 0.75rem;">Chen, P. (2026) – <em>GenAI Reshapes Self-Regulated Learning</em>, SSRN</td>
+              <td style="padding:0.6rem 0.75rem;white-space:nowrap;">SSRN</td>
+              <td style="padding:0.6rem 0.75rem;"><span style="background:#E3F2FD;color:var(--blue);padding:.2rem .5rem;border-radius:100px;font-size:.75rem;font-weight:600;">Cao</span></td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--gray-light);">
+              <td style="padding:0.6rem 0.75rem;color:var(--gray);">9</td>
+              <td style="padding:0.6rem 0.75rem;">The Verge (2026) – <em>AI research papers are getting better</em></td>
+              <td style="padding:0.6rem 0.75rem;white-space:nowrap;">Báo công nghệ</td>
+              <td style="padding:0.6rem 0.75rem;"><span style="background:#F3E5F5;color:#6A1B9A;padding:.2rem .5rem;border-radius:100px;font-size:.75rem;font-weight:600;">Trung bình khá</span></td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--gray-light);background:var(--gray-light);">
+              <td style="padding:0.6rem 0.75rem;color:var(--gray);">10</td>
+              <td style="padding:0.6rem 0.75rem;">Chính sách AI của 116 trường ĐH Mỹ (McDonald et al., 2024)</td>
+              <td style="padding:0.6rem 0.75rem;white-space:nowrap;">Tài liệu chính sách</td>
+              <td style="padding:0.6rem 0.75rem;"><span style="background:#E3F2FD;color:var(--blue);padding:.2rem .5rem;border-radius:100px;font-size:.75rem;font-weight:600;">Cao</span></td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--gray-light);">
+              <td style="padding:0.6rem 0.75rem;color:var(--gray);">11</td>
+              <td style="padding:0.6rem 0.75rem;">ScienceDirect (2025) – <em>Implementing GenAI: systematic review</em></td>
+              <td style="padding:0.6rem 0.75rem;white-space:nowrap;">Bài báo KH</td>
+              <td style="padding:0.6rem 0.75rem;"><span style="background:#E8F5E9;color:#2E7D32;padding:.2rem .5rem;border-radius:100px;font-size:.75rem;font-weight:600;">Rất cao</span></td>
+            </tr>
+            <tr style="background:var(--gray-light);">
+              <td style="padding:0.6rem 0.75rem;color:var(--gray);">12</td>
+              <td style="padding:0.6rem 0.75rem;">Ghimire et al. (2024) – <em>Educators' Awareness & Sentiments</em>, arXiv</td>
+              <td style="padding:0.6rem 0.75rem;white-space:nowrap;">arXiv</td>
+              <td style="padding:0.6rem 0.75rem;"><span style="background:#FFF8E1;color:#F57F17;padding:.2rem .5rem;border-radius:100px;font-size:.75rem;font-weight:600;">Khá cao</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="modal-section-title">IV. Phân tích & đánh giá chung</div>
+      <ul class="step-list">
+        <li><div class="step-num" style="background:#2E7D32;">✓</div><span><strong>Độ tin cậy cao:</strong> Phần lớn tài liệu từ Springer Nature, Frontiers, Elsevier, MDPI — các nhà xuất bản có phản biện khoa học nghiêm ngặt. Tác giả đều thuộc các trường đại học hoặc viện nghiên cứu uy tín.</span></li>
+        <li><div class="step-num" style="background:#2E7D32;">✓</div><span><strong>Dữ liệu cập nhật:</strong> Tài liệu thu thập từ 2024–2026, phản ánh xu hướng mới nhất. Nhiều nghiên cứu sử dụng meta-analysis, scoping review, khảo sát định lượng với dữ liệu lớn.</span></li>
+        <li><div class="step-num" style="background:var(--pink);">!</div><span><strong>Hạn chế:</strong> Một số tài liệu trên arXiv/SSRN chưa qua phản biện chính thức. Chủ đề còn mới nên nghiên cứu dài hạn chưa nhiều. Phần lớn tập trung vào bối cảnh Mỹ và châu Âu.</span></li>
+      </ul>
+
+      <div class="modal-section-title">V. Kết luận</div>
+      <p class="modal-intro">Chủ đề GenAI trong giáo dục đại học đang nhận được sự quan tâm rất lớn từ cộng đồng học thuật quốc tế. Generative AI mang lại nhiều lợi ích như hỗ trợ học tập cá nhân hóa, tăng hiệu quả nghiên cứu — nhưng cũng đặt ra vấn đề về đạo đức học thuật và nguy cơ phụ thuộc vào AI.</p>
+      <p class="modal-intro" style="margin:0;">Việc đánh giá độ tin cậy của nguồn thông tin là kỹ năng quan trọng đối với sinh viên trong thời đại số, giúp nâng cao khả năng tìm kiếm, phân tích và chọn lọc tài liệu học thuật.</p>
+
+      <div class="modal-tags">
+        <span class="tech-pill">Generative AI</span>
+        <span class="tech-pill">Google Scholar</span>
+        <span class="tech-pill">Springer Nature</span>
+        <span class="tech-pill">arXiv</span>
+        <span class="tech-pill">SSRN</span>
+        <span class="tech-pill">Đánh giá nguồn</span>
+        <span class="tech-pill">Giáo dục đại học</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- MODAL BÀI 5 -->
+<div class="modal-overlay" id="modal-bai5" onclick="if(event.target===this)this.classList.remove('open')">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div>
+        <h2>✏️ Ứng dụng AI tạo sinh trong sáng tạo nội dung số</h2>
+        <p>Bài tập 2 — Bài 5 — MSSV: 25022671 — Trần Đức Hùng</p>
+      </div>
+      <button class="modal-close" onclick="document.getElementById('modal-bai5').classList.remove('open')">✕</button>
+    </div>
+    <div class="modal-body">
+
+      <div class="modal-section-title">1. Giới thiệu</div>
+      <p class="modal-intro">Dự án thiết kế infographic với chủ đề: <strong>"Tác động của AI tạo sinh đối với việc học tập của sinh viên"</strong>. Mục tiêu tìm hiểu cách công cụ AI hỗ trợ sáng tạo nội dung, đánh giá điểm mạnh, hạn chế và vấn đề đạo đức liên quan.</p>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:0.6rem;margin-bottom:1.25rem;">
+        <div style="background:var(--blue-pale);border-radius:10px;padding:0.8rem;text-align:center;">
+          <div style="font-size:1.3rem;">💬</div>
+          <div style="font-size:0.8rem;font-weight:600;margin-top:0.3rem;">ChatGPT</div>
+          <div style="font-size:0.72rem;color:var(--gray);">Tạo văn bản</div>
+        </div>
+        <div style="background:var(--pink-pale);border-radius:10px;padding:0.8rem;text-align:center;">
+          <div style="font-size:1.3rem;">✨</div>
+          <div style="font-size:0.8rem;font-weight:600;margin-top:0.3rem;">Google Gemini</div>
+          <div style="font-size:0.72rem;color:var(--gray);">So sánh nội dung</div>
+        </div>
+        <div style="background:#E8F5E9;border-radius:10px;padding:0.8rem;text-align:center;">
+          <div style="font-size:1.3rem;">🎨</div>
+          <div style="font-size:0.8rem;font-weight:600;margin-top:0.3rem;">DALL·E</div>
+          <div style="font-size:0.72rem;color:var(--gray);">Tạo hình ảnh</div>
+        </div>
+        <div style="background:#EDE7F6;border-radius:10px;padding:0.8rem;text-align:center;">
+          <div style="font-size:1.3rem;">🖼️</div>
+          <div style="font-size:0.8rem;font-weight:600;margin-top:0.3rem;">Canva AI</div>
+          <div style="font-size:0.72rem;color:var(--gray);">Thiết kế</div>
+        </div>
+      </div>
+
+      <div class="modal-section-title">2. Quá trình thực hiện</div>
+      <ul class="step-list">
+        <li>
+          <div class="step-num">1</div>
+          <span>
+            <strong>Xây dựng ý tưởng bằng ChatGPT</strong><br>
+            <span style="color:var(--gray);font-size:0.84rem;">Prompt: <em>"Hãy tạo dàn ý cho infographic về tác động của AI tạo sinh đối với sinh viên đại học."</em></span><br>
+            Kết quả: 5 phần nội dung (AI là gì? / Lợi ích / Hạn chế / So sánh / Nguyên tắc), gợi ý màu xanh–tím và phong cách hiện đại. Em đã rút gọn, bổ sung ví dụ thực tế và thêm phần "Kinh nghiệm cá nhân".
+          </span>
+        </li>
+        <li>
+          <div class="step-num">2</div>
+          <span>
+            <strong>So sánh với Google Gemini</strong><br>
+            <span style="color:var(--gray);font-size:0.84rem;">Prompt: <em>"Viết nội dung infographic về AI trong giáo dục với phong cách học thuật và súc tích."</em></span><br>
+            Gemini cho nội dung học thuật hơn nhưng dài hơn ChatGPT. Em kết hợp điểm mạnh của cả hai để hoàn thiện nội dung.
+          </span>
+        </li>
+        <li>
+          <div class="step-num">3</div>
+          <span>
+            <strong>Tạo hình ảnh bằng DALL·E</strong><br>
+            <span style="color:var(--gray);font-size:0.84rem;">Prompt: <em>"Create a modern flat-design illustration of university students using generative AI tools for studying, futuristic classroom, blue and purple color palette."</em></span><br>
+            Ảnh phong cách hiện đại, sinh viên dùng laptop và AI chatbot. Em cắt bớt chi tiết rối và tích hợp thêm icon trong Canva.
+          </span>
+        </li>
+        <li>
+          <div class="step-num">4</div>
+          <span>
+            <strong>Thiết kế infographic bằng Canva AI</strong><br>
+            Chọn template hiện đại, dùng Magic Design gợi ý bố cục, tự chỉnh màu sắc, font chữ, cân đối nội dung và hình ảnh. Phần sáng tạo cá nhân thể hiện rõ nhất ở bước này.
+          </span>
+        </li>
+      </ul>
+
+      <div class="modal-section-title">3. So sánh ChatGPT & Gemini</div>
+      <div style="overflow-x:auto;margin-bottom:1.25rem;">
+        <table style="width:100%;border-collapse:collapse;font-size:0.83rem;min-width:400px;">
+          <thead>
+            <tr style="background:var(--blue);color:#fff;">
+              <th style="padding:0.6rem 0.9rem;text-align:left;border-radius:8px 0 0 0;">Tiêu chí</th>
+              <th style="padding:0.6rem 0.9rem;text-align:center;">ChatGPT</th>
+              <th style="padding:0.6rem 0.9rem;text-align:center;border-radius:0 8px 0 0;">Gemini</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid var(--gray-light);">
+              <td style="padding:0.6rem 0.9rem;font-weight:500;">Văn phong</td>
+              <td style="padding:0.6rem 0.9rem;text-align:center;color:#2E7D32;">✅ Tự nhiên, dễ hiểu</td>
+              <td style="padding:0.6rem 0.9rem;text-align:center;color:var(--gray);">Học thuật, trang trọng</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--gray-light);background:var(--gray-light);">
+              <td style="padding:0.6rem 0.9rem;font-weight:500;">Sáng tạo ý tưởng</td>
+              <td style="padding:0.6rem 0.9rem;text-align:center;color:#2E7D32;">✅ Tốt</td>
+              <td style="padding:0.6rem 0.9rem;text-align:center;color:var(--gray);">Trung bình</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--gray-light);">
+              <td style="padding:0.6rem 0.9rem;font-weight:500;">Độ ngắn gọn</td>
+              <td style="padding:0.6rem 0.9rem;text-align:center;color:#2E7D32;">✅ Tốt</td>
+              <td style="padding:0.6rem 0.9rem;text-align:center;color:var(--gray);">Khá dài</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--gray-light);background:var(--gray-light);">
+              <td style="padding:0.6rem 0.9rem;font-weight:500;">Phù hợp infographic</td>
+              <td style="padding:0.6rem 0.9rem;text-align:center;color:#2E7D32;">✅ Cao</td>
+              <td style="padding:0.6rem 0.9rem;text-align:center;color:var(--gray);">Trung bình</td>
+            </tr>
+            <tr>
+              <td style="padding:0.6rem 0.9rem;font-weight:500;">Phù hợp nghiên cứu</td>
+              <td style="padding:0.6rem 0.9rem;text-align:center;color:var(--gray);">Trung bình</td>
+              <td style="padding:0.6rem 0.9rem;text-align:center;color:#2E7D32;">✅ Cao</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="modal-section-title">4. Phân tích vai trò AI trong sáng tạo</div>
+      <ul class="step-list">
+        <li><div class="step-num" style="background:#2E7D32;">✓</div><span><strong>AI hỗ trợ khoảng 50%</strong> quá trình sáng tạo — brainstorm ý tưởng, tạo nội dung ban đầu, gợi ý bố cục và tạo hình minh họa. Phần còn lại là chỉnh sửa, lựa chọn và thiết kế cá nhân.</span></li>
+        <li><div class="step-num" style="background:var(--pink);">!</div><span><strong>Hạn chế:</strong> Nội dung đôi khi thiếu chiều sâu, hình ảnh chưa tự nhiên, template dễ bị giống nhau. Cần tư duy sáng tạo và kỹ năng chỉnh sửa để tạo dấu ấn cá nhân.</span></li>
+        <li><div class="step-num" style="background:var(--pink);">⚠</div><span><strong>Vấn đề đạo đức:</strong> Nguy cơ đạo văn, dùng thông tin chưa kiểm chứng, bản quyền hình ảnh AI, và sự phụ thuộc vào công nghệ.</span></li>
+      </ul>
+
+      <div class="modal-section-title">5. Kết luận</div>
+      <p class="modal-intro">AI tạo sinh giúp tiết kiệm thời gian, hỗ trợ ý tưởng và nâng cao hiệu quả làm việc. Tuy nhiên, để tạo sản phẩm chất lượng, người dùng vẫn cần tư duy sáng tạo, khả năng chọn lọc thông tin và kỹ năng chỉnh sửa.</p>
+      <p class="modal-intro" style="margin-bottom:1rem;">AI không thể thay thế hoàn toàn con người trong lĩnh vực sáng tạo — giá trị sản phẩm nằm ở khả năng kết hợp giữa công nghệ và dấu ấn cá nhân.</p>
+      <a href="https://www.canva.com/design/DAHKXzwr2AM/oONl3_iIinI1VjM6UQYFNQ/edit" target="_blank" style="display:inline-flex;align-items:center;gap:0.5rem;background:var(--blue);color:#fff;padding:0.6rem 1.25rem;border-radius:100px;font-size:0.85rem;font-weight:600;text-decoration:none;">
+        🔗 Xem Infographic trên Canva
+      </a>
+
+      <div class="modal-tags" style="margin-top:1.25rem;">
+        <span class="tech-pill">ChatGPT</span>
+        <span class="tech-pill">Google Gemini</span>
+        <span class="tech-pill">DALL·E</span>
+        <span class="tech-pill">Canva AI</span>
+        <span class="tech-pill">Infographic</span>
+        <span class="tech-pill">Prompt Engineering</span>
+        <span class="tech-pill">Sáng tạo nội dung</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- MODAL BÀI 6 -->
+<div class="modal-overlay" id="modal-bai6" onclick="if(event.target===this)this.classList.remove('open')">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div>
+        <h2>🔐 Sử dụng AI có trách nhiệm trong học thuật</h2>
+        <p>Bài tập 4 — Bài 6 — MSSV: 25022671 — Trần Đức Hùng</p>
+      </div>
+      <button class="modal-close" onclick="document.getElementById('modal-bai6').classList.remove('open')">✕</button>
+    </div>
+    <div class="modal-body">
+
+      <div class="modal-section-title">I. Chính sách sử dụng AI tại Đại học Quốc gia Hà Nội</div>
+      <p class="modal-intro">VNU có quan điểm cân bằng: AI không bị cấm hoàn toàn mà được xem như công cụ hỗ trợ. Nhà trường nhấn mạnh trách nhiệm cá nhân sinh viên trong việc đảm bảo tính trung thực học thuật.</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.7rem;margin-bottom:1.25rem;">
+        <div style="background:var(--blue-pale);border-radius:12px;padding:1rem;">
+          <div style="font-size:0.78rem;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.5rem;">✅ Được phép</div>
+          <ul style="font-size:0.82rem;color:var(--black);list-style:none;display:flex;flex-direction:column;gap:.3rem;">
+            <li>• Dùng AI như công cụ hỗ trợ học tập</li>
+            <li>• Gợi ý ý tưởng và cải thiện trình bày</li>
+            <li>• Trích dẫn minh bạch khi dùng AI</li>
+          </ul>
+        </div>
+        <div style="background:#FFEBEE;border-radius:12px;padding:1rem;">
+          <div style="font-size:0.78rem;font-weight:700;color:#C62828;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.5rem;">❌ Không được phép</div>
+          <ul style="font-size:0.82rem;color:var(--black);list-style:none;display:flex;flex-direction:column;gap:.3rem;">
+            <li>• Sao chép nguyên văn nội dung AI</li>
+            <li>• Nộp bài do AI viết hoàn toàn</li>
+            <li>• Không kiểm chứng thông tin từ AI</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="modal-section-title">II. Thực hiện nhiệm vụ học tập với AI</div>
+      <p style="font-size:0.88rem;font-weight:600;color:var(--black);margin-bottom:0.75rem;">📌 Nhiệm vụ: Chuẩn bị thuyết trình về <em>"Tác động của AI tạo sinh đối với sinh viên đại học"</em></p>
+      <ul class="step-list">
+        <li>
+          <div class="step-num">1</div>
+          <span>
+            <strong>Prompt 1:</strong> <em>"Hãy tạo dàn ý cho bài thuyết trình về tác động của AI tạo sinh đối với sinh viên đại học."</em><br>
+            <span style="color:var(--gray);font-size:0.83rem;">AI gợi ý 5 phần. Em bổ sung ví dụ thực tế VN, thêm phần "đạo đức học thuật" và rút gọn cho vừa 10 phút.</span>
+          </span>
+        </li>
+        <li>
+          <div class="step-num">2</div>
+          <span>
+            <strong>Prompt 2:</strong> <em>"Hãy viết đoạn mở đầu ngắn gọn, thu hút cho bài thuyết trình về AI trong học tập."</em><br>
+            <span style="color:var(--gray);font-size:0.83rem;">Nội dung tự nhiên nhưng hơi dài. Em rút còn 4 câu, đổi văn phong cá nhân, thêm câu hỏi mở tạo tương tác.</span>
+          </span>
+        </li>
+        <li>
+          <div class="step-num">3</div>
+          <span>
+            <strong>Prompt 3:</strong> <em>"Liệt kê các rủi ro của việc lạm dụng AI trong học thuật."</em><br>
+            <span style="color:var(--gray);font-size:0.83rem;">AI đưa ra: đạo văn, phụ thuộc công nghệ, giảm tư duy phản biện, thông tin sai lệch, vi phạm bản quyền. Em đối chiếu với tài liệu học thuật, loại ý trùng, thêm ví dụ cụ thể.</span>
+          </span>
+        </li>
+      </ul>
+
+      <div style="background:var(--blue-pale);border-radius:12px;padding:1rem;margin-bottom:1.25rem;">
+        <div style="font-size:0.78rem;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.4rem;">📝 Cách trích dẫn AI trong bài</div>
+        <p style="font-size:0.84rem;color:var(--black);font-style:italic;line-height:1.6;margin:0;">"Nội dung bài thuyết trình có sử dụng sự hỗ trợ của ChatGPT, Gemini và Microsoft Copilot để gợi ý ý tưởng, xây dựng dàn ý và chỉnh sửa diễn đạt. Toàn bộ nội dung cuối cùng đã được người viết kiểm tra, chỉnh sửa và chịu trách nhiệm."</p>
+      </div>
+
+      <div class="modal-section-title">III. Phân tích vấn đề đạo đức</div>
+      <ul class="step-list">
+        <li>
+          <div class="step-num" style="background:var(--pink);">⚖</div>
+          <span><strong>Ranh giới hỗ trợ & gian lận:</strong> Hỗ trợ hợp lý là dùng AI gợi ý ý tưởng, tóm tắt, chỉnh sửa câu văn — miễn là sinh viên tự nghiên cứu và hiểu nội dung. Gian lận là yêu cầu AI viết toàn bộ bài, sao chép nguyên văn hoặc nộp sản phẩm AI như của cá nhân.</span>
+        </li>
+        <li>
+          <div class="step-num" style="background:var(--pink);">©</div>
+          <span><strong>Quyền sở hữu trí tuệ:</strong> AI có thể dùng dữ liệu có bản quyền. Nếu không kiểm chứng hoặc không trích dẫn rõ, sinh viên dễ vi phạm sở hữu trí tuệ. AI đôi khi còn tạo nguồn tham khảo giả.</span>
+        </li>
+        <li>
+          <div class="step-num" style="background:var(--pink);">🧠</div>
+          <span><strong>Tác động đến phát triển kỹ năng:</strong> Phụ thuộc quá mức vào AI khiến sinh viên giảm tư duy độc lập, lười nghiên cứu và yếu kỹ năng viết, phân tích. AI nên là công cụ hỗ trợ, không phải "người học thay".</span>
+        </li>
+      </ul>
+
+      <div class="modal-section-title">IV. 7 Nguyên tắc sử dụng AI có trách nhiệm</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0.6rem;margin-bottom:1.25rem;">
+        <div style="border:1px solid var(--border);border-radius:12px;padding:0.9rem;display:flex;gap:0.6rem;align-items:flex-start;">
+          <div style="font-size:1.2rem;flex-shrink:0;">💡</div>
+          <div><div style="font-size:0.82rem;font-weight:600;margin-bottom:.2rem;">Hỗ trợ, không thay thế</div><div style="font-size:0.78rem;color:var(--gray);">AI chỉ gợi ý, tư duy vẫn là của bạn</div></div>
+        </div>
+        <div style="border:1px solid var(--border);border-radius:12px;padding:0.9rem;display:flex;gap:0.6rem;align-items:flex-start;">
+          <div style="font-size:1.2rem;flex-shrink:0;">🔍</div>
+          <div><div style="font-size:0.82rem;font-weight:600;margin-bottom:.2rem;">Luôn kiểm chứng</div><div style="font-size:0.78rem;color:var(--gray);">Không dùng thông tin AI chưa xác minh</div></div>
+        </div>
+        <div style="border:1px solid var(--border);border-radius:12px;padding:0.9rem;display:flex;gap:0.6rem;align-items:flex-start;">
+          <div style="font-size:1.2rem;flex-shrink:0;">📢</div>
+          <div><div style="font-size:0.82rem;font-weight:600;margin-bottom:.2rem;">Minh bạch trích dẫn</div><div style="font-size:0.78rem;color:var(--gray);">Ghi chú rõ nếu AI hỗ trợ làm bài</div></div>
+        </div>
+        <div style="border:1px solid var(--border);border-radius:12px;padding:0.9rem;display:flex;gap:0.6rem;align-items:flex-start;">
+          <div style="font-size:1.2rem;flex-shrink:0;">✍️</div>
+          <div><div style="font-size:0.82rem;font-weight:600;margin-bottom:.2rem;">Không sao chép nguyên văn</div><div style="font-size:0.78rem;color:var(--gray);">Diễn đạt lại bằng ngôn ngữ cá nhân</div></div>
+        </div>
+        <div style="border:1px solid var(--border);border-radius:12px;padding:0.9rem;display:flex;gap:0.6rem;align-items:flex-start;">
+          <div style="font-size:1.2rem;flex-shrink:0;">⚖️</div>
+          <div><div style="font-size:0.82rem;font-weight:600;margin-bottom:.2rem;">Tôn trọng bản quyền</div><div style="font-size:0.78rem;color:var(--gray);">Trích dẫn tài liệu và nguồn tham khảo</div></div>
+        </div>
+        <div style="border:1px solid var(--border);border-radius:12px;padding:0.9rem;display:flex;gap:0.6rem;align-items:flex-start;">
+          <div style="font-size:1.2rem;flex-shrink:0;">🚫</div>
+          <div><div style="font-size:0.82rem;font-weight:600;margin-bottom:.2rem;">Không gian lận thi cử</div><div style="font-size:0.78rem;color:var(--gray);">Không dùng AI trong kiểm tra cá nhân</div></div>
+        </div>
+        <div style="border:1px solid var(--border);border-radius:12px;padding:0.9rem;display:flex;gap:0.6rem;align-items:flex-start;">
+          <div style="font-size:1.2rem;flex-shrink:0;">🧠</div>
+          <div><div style="font-size:0.82rem;font-weight:600;margin-bottom:.2rem;">Tư duy phản biện</div><div style="font-size:0.78rem;color:var(--gray);">Luôn đánh giá chất lượng đầu ra AI</div></div>
+        </div>
+      </div>
+
+      <div class="modal-section-title">V. Kết luận</div>
+      <div style="background:linear-gradient(135deg,var(--blue-pale),var(--pink-pale));border-radius:14px;padding:1.25rem;margin-bottom:0;">
+        <p style="font-size:0.92rem;font-style:italic;color:var(--black);text-align:center;font-weight:500;margin:0;">"AI là công cụ hỗ trợ học tập, không phải thay thế tư duy con người."</p>
+      </div>
+      <p class="modal-intro" style="margin-top:1rem;">AI tạo sinh đang thay đổi mạnh mẽ cách sinh viên học tập. Nếu dùng đúng cách, AI là công cụ hỗ trợ hiệu quả. Nếu lạm dụng, AI sẽ gây ảnh hưởng tiêu cực đến tính trung thực học thuật và sự phát triển kỹ năng cá nhân.</p>
+
+      <div class="modal-tags">
+        <span class="tech-pill">An toàn học thuật</span>
+        <span class="tech-pill">ChatGPT</span>
+        <span class="tech-pill">Microsoft Copilot</span>
+        <span class="tech-pill">Đạo đức AI</span>
+        <span class="tech-pill">Liêm chính học thuật</span>
+        <span class="tech-pill">VNU</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
